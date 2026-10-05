@@ -64,7 +64,7 @@ Built on the **Agent Client Protocol (ACP)** — bring your own agent harness:
 ### 🧠 Language Intelligence
 - **gopls-powered LSP** — go-to-definition, hover, diagnostics gutter, document symbols
 - Framework is server-agnostic; TS/Rust/Java grammar configs in the roadmap
-- **`⌘T` symbol search** — web-tree-sitter (WASM) symbol index per project, invalidated on save/filesystem change
+- **`⌘T` symbol search** — web-tree-sitter (WASM) symbol index per project for Go, JavaScript/TypeScript, PHP, Python and Rust, invalidated on save/filesystem change
 
 ### 💻 Real Terminal
 - True PTY sessions (`creack/pty` on Unix, ConPTY on Windows) per tab, `cwd` = project root

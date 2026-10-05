@@ -48,7 +48,7 @@ const FileTree: React.FC<{ root: string; projectId: string }> = ({
   root,
   projectId,
 }) => {
-  const { setActive } = useProjects()
+  const { activeId, setActive } = useProjects()
   const { openFile } = useTabs()
   const [entries, setEntries] = useState<Entry[]>([])
   const [openDirs, setOpenDirs] = useState<Set<string>>(new Set())
@@ -263,6 +263,7 @@ const FileTree: React.FC<{ root: string; projectId: string }> = ({
   // ⌘V anywhere in the tree pastes into the active project root.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (activeId !== projectId) return
       if (!e.metaKey && !e.ctrlKey) return
       if (e.key.toLowerCase() !== 'v') return
       // Text controls, including CodeMirror's contenteditable surface, own paste.
@@ -284,7 +285,7 @@ const FileTree: React.FC<{ root: string; projectId: string }> = ({
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [root])
+  }, [root, projectId, activeId])
 
   const openCtxMenu = (
     e: React.MouseEvent,
